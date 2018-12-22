@@ -8,9 +8,9 @@ A collection of reddit utility scripts organized as a self-hosted web app. Curre
 
 <img src="https://i.imgur.com/6Z3XtYC.png" width="909">
 
-## Install process
+## Install Process
 
-1. Clone the repository to your local machine (or download the zip file)
+1. Clone the repository to your local machine
 1. Make sure Python 3.5+ is installed
 1. Build a `.whl` (wheel) file
 1. Set up a virtual environment
@@ -20,27 +20,26 @@ A collection of reddit utility scripts organized as a self-hosted web app. Curre
 
 [Full instructions can be found here](http://flask.pocoo.org/docs/1.0/tutorial/deploy/#build-and-install)
 
-## Build Process
-
-1. python setup.py bdist_wheel
-
-[Full instructions can be found here](http://flask.pocoo.org/docs/1.0/tutorial/deploy/#build-and-install)
+Note: This web app is meant to be self-hosted on something like a [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi)
 
 ## Development Process
+
+This web app is built on [Flask](http://flask.pocoo.org/) + [Bootstrap 4](http://getbootstrap.com/) + [PRAW](https://github.com/praw-dev/praw)
 
 Here are the general instructions:
 
 1. Create a virtual environment
+1. Make changes to code
 1. Run the flask app
 
 The specific instructions for power shell on Windows:
 
-1. virtualenv env
-1. ./env/Scripts/activate
-1. python -m pip install -e .
-1. $env:FLASK_ENV = "development"
-1. $env:FLASK_APP = "reddit_utils"
-1. flask run
+1. `virtualenv env`
+1. `./env/Scripts/activate`
+1. `python -m pip install -e .`
+1. `$env:FLASK_ENV = "development"`
+1. `$env:FLASK_APP = "reddit_utils"`
+1. `flask run`
 
 Here are some helpful links that provide more detail:
 
@@ -62,7 +61,7 @@ Helped wanted with the following:
 * Ability to restrict search by subreddit (underlying code is there but needs GUI)
 * Ability to search your own submissions
 * Ability to search past the 1000 item limit
-* Ability to unhide your posts
+* Ability to unhide all your posts
 * Ability to export your saved posts in various formats
 * For really long comments (only show the first few paragraphs or so, collapse the rest)
 * Highlight search terms in results (something like [this](https://markjs.io/))

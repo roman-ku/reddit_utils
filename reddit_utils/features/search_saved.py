@@ -3,7 +3,7 @@ import logging
 import pprint
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, render_template, request
 )
 
 from ..auth import api_access_required

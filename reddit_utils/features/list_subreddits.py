@@ -5,12 +5,11 @@ import pprint
 from pprint import pprint as pp
 
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, render_template, request
 )
 
 from ..auth import api_access_required
 from ..reddit import get_reddit_object
-from .search import perform_search, check_form
 
 bp = Blueprint('list_subreddits', __name__)
 
@@ -50,13 +49,9 @@ def get_subs(token, get_latest, sort_by, sort_reverse):
 
     if result['status'] == 'error':
         return result
-    else:
-        reddit = result['data']
 
+    reddit = result['data']
     results = []
-
-    print('fetching items: ')
-    print('-'*200)
 
     for subreddit in reddit.user.subreddits(limit=None):
 
@@ -112,10 +107,7 @@ def check_form(form):
     else:
         options['sort_by'] = 'subscribers'
 
-    if 'sort_order' in form and form['sort_order'] == 'desc':
-        options['sort_reverse'] = True
-    else:
-        options['sort_reverse'] = False
+    options['sort_reverse'] = 'sort_order' in form and form['sort_order'] == 'desc'
 
     # if we are not getting the latest post, we can't sort by the time of the last post
     if not options['get_latest'] and form['sort_by'] == 'last_post':

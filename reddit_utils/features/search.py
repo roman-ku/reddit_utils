@@ -1,11 +1,9 @@
 
-import json
 import logging
 
 import pprint
 from pprint import pprint as pp
 
-import praw
 from praw.models import Submission
 from praw.models import Comment
 
@@ -21,8 +19,8 @@ def perform_search(search_options, token):
 
     if result['status'] == 'error':
         return result
-    else:
-        reddit = result['data']
+
+    reddit = result['data']
 
     results = user_saved(reddit, **search_options)
     results = list(results) if results else []
@@ -128,6 +126,8 @@ def query_in_str(queries, string):
     for query in queries:
         if query in string:
             return True
+
+    return False
 
 
 

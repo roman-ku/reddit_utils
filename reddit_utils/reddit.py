@@ -11,8 +11,8 @@ logger = logging.getLogger('logger')
 def get_reddit_object(token):
 
     try:
-        
-        reddit = praw.Reddit(user_agent= 'Script that searches saved posts',
+
+        reddit = praw.Reddit(user_agent='reddit_utils web app by Roman Kuleshov',
                              client_id=token['client_id'],
                              client_secret=token['client_secret'],
                              username=token['username'],

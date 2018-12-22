@@ -27,9 +27,9 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    LOGGER_CONFIG = os.path.join(app.root_path, 'files', 'logging_config.yaml')
+    logger_config = os.path.join(app.root_path, 'files', 'logging_config.yaml')
 
-    with open(LOGGER_CONFIG) as fid:
+    with open(logger_config) as fid:
 
         try:
             global_config = yaml.safe_load(fid)

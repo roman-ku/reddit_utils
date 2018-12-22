@@ -22,7 +22,7 @@ def login():
         token['client_secret'] = request.form['clientsecret']
         token['username'] = request.form['username']
         token['password'] = request.form['password']
-        
+
         result = get_reddit_object(token)
 
         if result['status'] == 'error':

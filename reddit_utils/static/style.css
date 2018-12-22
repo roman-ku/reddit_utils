@@ -1,0 +1,34 @@
+
+body {background: #CCC !important}
+
+.app-off-black {
+	color: #484848;
+}
+
+.app-medium-gray {
+	color: #777;
+}
+
+.app-result-card {
+	background-color: #f0f0f0;
+}
+
+.app-sub-image img, .app-sub-image p {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.app-sub-image p {
+	font-size: 40px;
+	color: #ededed;
+	text-align: center;
+}
+
+.app-sub-image-empty {
+	background-color: #CFCFCF;
+}
+
+.app-comment div :last-child {
+	margin-bottom: 0px;
+}

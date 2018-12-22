@@ -1,0 +1,3 @@
+graft reddit_utils/static
+graft reddit_utils/templates
+global-exclude *.pyc

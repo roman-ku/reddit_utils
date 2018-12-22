@@ -1,0 +1,158 @@
+{% extends "bootstrap/base.html" %}
+
+
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"/> 
+<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet"> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet"
+      href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
+
+
+
+
+{% block scripts %}
+
+{{super()}}
+
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+    </script>
+
+<script>
+    window.onresize = displayWindowSize;
+    window.onload = displayWindowSize;
+
+    function displayWindowSize() {
+        myWidth = window.innerWidth;
+        myHeight = window.innerHeight;
+        // your size calculation code here
+
+        var zone = ''
+
+        if (myWidth >= 1200) {
+        	zone = 'extra large'
+        } else if (myWidth >= 992) {
+        	zone = 'large'
+        } else if (myWidth >= 768) {
+        	zone = 'medium'
+        } else if (myWidth >= 576) {
+        	zone = 'small'
+        } else {
+        	zone = 'extra small'
+        }
+
+        document.getElementById("dimensions").innerHTML = myWidth + ' (' + zone + ')'
+    };
+</script>
+
+{% endblock %}
+
+
+
+
+{% block header %}
+  <h1>{% block title %}Login{% endblock %}</h1>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container mt-5 my-4 pt-3">
+
+	<div class="row">
+		<h4 class="d-none" id="dimensions"></h4>
+	</div>
+
+	<div class="row  pt-4 ">
+
+{# 
+		<div class="col-12 col-md-2">
+			<h2>hello</h2>
+		</div> #}
+
+		
+		<div class="col-12 col-md-10 col-lg-8 rounded mx-auto pt-4 pb-1">
+
+			<form method="post">
+				<div class="form-group row">
+					<div class="col-12">
+						<h2 class="text-center app-off-black">Reddit API Access</h2>
+						<p class="mt-4 app-off-black">To use this web app you need to obtain API access. The exact procedures are given on <a href="https://praw.readthedocs.io/en/latest/getting_started/authentication.html">this page</a>. The main steps are:</p>
+						<ol>
+							<li>Go to <a href="https://www.reddit.com/prefs/apps/">the developer portal on the reddit website</a></li>
+							<li>Click <mark>create app...</mark> at the bottom of the page to do the registration process (<a href="https://i.imgur.com/Hw9p48c.png">here is what a completed form</a> looks like — note the name and redirect URL are completely arbitrary)</li>
+							<li>Click <mark>create app</mark></li>
+							<li>Next click <mark>edit</mark> on your newly created application (you should get a screen that looks <a href="https://i.imgur.com/zYk03dt.png">like this</a>)</li>
+							<li>Copy and paste the <mark>client id</mark> and <mark>client secret</mark> to this page</li>
+							<li>Enter in your username and password</li>
+						</ol>
+						<p>Note: The tokens you have entered above will be stored as <a href="http://flask.pocoo.org/docs/1.0/api/#sessions">signed cookies</a>. You will be able to clear them at anytime by pressing logout (once you are "logged in" so to speak).</p>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="clientid" class="col-sm-3 col-md-3 col-lg-2 col-form-label col-form-label-sm">Client ID</label>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<input type="text" class="form-control form-control-sm" id="clientid" name="clientid" value="{{ request.form['clientid'] }}" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="clientsecret" class="col-sm-3 col-md-3 col-lg-2 col-form-label col-form-label-sm">Client Secret</label>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<input type="clientsecret" class="form-control form-control-sm" id="clientsecret" name="clientsecret" value="{{ request.form['clientsecret'] }}" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="username" class="col-sm-3 col-md-3 col-lg-2 col-form-label col-form-label-sm">Username</label>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<input type="username" class="form-control form-control-sm" id="username" name="username" value="{{ request.form['username'] }}" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="password" class="col-sm-3 col-md-3 col-lg-2 col-form-label col-form-label-sm">Password</label>
+					<div class="col-sm-9 col-md-9 col-lg-10">
+						<input type="password" class="form-control form-control-sm" id="password" name="password" value="{{ request.form['password'] }}" required>
+					</div>
+				</div>
+				<div class="form-group row mb-0">
+					<div class="col">
+						
+					</div>
+					<div class="col-12 col-sm-4 col-lg-3 col-xl-3">
+						<button type="submit" name="update" value="reset" class="btn btn-primary btn-sm float-right btn-block">Get Access</button>
+					</div>
+				</div>
+			</form>
+			
+		</div>
+
+{# 		<div class="col-12 col-md-2">
+			<h2>hello</h2>
+		</div> #}
+
+		
+
+	</div>
+
+	<div class="row mt-3">
+
+		<div class="col-12 col-md-10 col-lg-8 mx-auto px-0">
+			{% for message in get_flashed_messages() %}
+				<div class="alert {% if not 'Error' in message %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+				  {{ message }}
+				</div>
+			{% endfor %}			
+		</div>
+		
+	</div>
+
+</div>
+
+{% endblock %}

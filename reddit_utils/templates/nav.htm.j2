@@ -1,0 +1,20 @@
+
+{% macro nav() -%}
+
+    <div class="container-responsive mt-2 mx-4">
+        <div class="row">
+            <div class="col">
+                <ul class="list-inline float-left">
+                    <li class="list-inline-item small"><a href="{{ url_for('search_saved.main') }}">Search Saved Posts</a></li>
+                    <li class="list-inline-item small"><a href="{{ url_for('list_subreddits.main') }}">List Subreddits</a></li>
+                </ul>
+                <ul class="list-inline float-right">
+                    <li class="list-inline-item small"><a href="#" data-toggle="modal" data-target="#about-modal">About</a></li>
+                    <li class="list-inline-item small"><a href="#" data-toggle="modal" data-target="#usage-modal">Usage</a></li>
+                    <li class="list-inline-item small"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{%- endmacro %}

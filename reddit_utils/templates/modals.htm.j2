@@ -1,0 +1,155 @@
+
+{% macro about() -%}
+
+<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">About</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body app-off-black">
+                <h1 class="text-center text-monospace">reddit_utils</h1>
+                <h5 class="text-center">Roman Kuleshov</h5>
+                <p>A collection of reddit utility scripts organized as a self-hosted web app. Currently the following features are available:</p>
+                <ul>
+                    <li>Search through your saved posts</li>
+                    <li>Ability to fetch your subreddits</li>
+                </ul>
+                <p>In the future I would like to add the following features:</p>
+                <ul>
+                    <li>Ability to have multiple search terms</li>
+                    <li>Ability to restrict search by subreddit</li>
+                    <li>Ability to search your own submissions</li>
+                    <li>Ability to search past the 1000 item limit</li>
+                    <li>Ability to unhide your posts</li>
+                    <li>Ability to export your saved posts in various formats</li>
+                </ul>
+                <p>Contributions to this project are welcome. If you contribute to the project, your name will appear on this page.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- endmacro %}
+
+
+
+{% macro saved_search() -%}
+
+<div class="modal fade" id="usage-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Usage</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body app-off-black">
+
+                <h2 class="text-center mb-4">Search Saved Posts</h2>
+
+                <p class="mb-1">This script works the following way:</p>
+
+                <ol>
+                    <li>Obtains the user's saved posts</li>
+                    <li>Using simple ctrl+f searching looks for the user's <mark>search term</mark> in the following:
+                        <ul>
+                            <li>link_title</li>
+                            <li>link_permalink</li>
+                            <li>link_url</li>
+                            <li>selftext</li>
+                            <li>title</li>
+                            <li>body</li>
+                            <li>permalink</li>
+                            <li>url</li>
+                        </ul>
+                    </li>
+                    <li>Displays all submissions in which the <mark>search term</mark> was found in one of the above</li>
+                </ol>
+
+                <p>Note: This script is case insensitive</p>
+
+                <p>Note: Only the last 1000 saved posts are returned and can be searchced. This is because there is a 1000 hard limit imposed by the reddit API.</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- endmacro %}
+
+
+
+{% macro list_subreddits() -%}
+
+<div class="modal fade" id="usage-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Usage</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body app-off-black">
+
+                <h2 class="text-center mb-4">List Subreddits</h2>
+
+                <p class="mb-1">This script works the following way:</p>
+
+                <ol>
+                    <li>
+                        Choose options
+                        <ul>
+                            <li>Choose <mark>Sort By</mark> option</li>
+                            <li>Choose <mark>Sort Order</mark> option</li>
+                            <li>If you would like to know the last post made in each subreddit, check the <mark>get latest post</mark> option</li>
+                        </ul>
+                    </li>
+                    <li>Click <mark>Get Subreddits</mark></li>
+                    <li>Wait for subreddits to be fetched</li>
+                </ol>
+
+                <p>Note: You can only sort by the <mark>Date of last post in subreddit</mark> if the <mark>get lastest post</mark> is checked (if you choose to sort by this option when the checkbox is not checked, the sort by will be set to the <mark>Number of subscribers</mark></p>
+
+                <p>The <mark>get latest post</mark> option can be useful to streamline your subreddits e.g. to unsubscribe from all subreddits where the last post was made years ago.</p>
+
+{#                 <ol>
+                    <li>Obtains all of the user's saved posts</li>
+                    <li>Using simple ctrl+f searching looks for the user's <mark>search term</mark> in the following:
+                        <ul>
+                            <li>link_title</li>
+                            <li>link_permalink</li>
+                            <li>link_url</li>
+                            <li>selftext</li>
+                            <li>title</li>
+                            <li>body</li>
+                            <li>permalink</li>
+                            <li>url</li>
+                        </ul>
+                    </li>
+                    <li>Displays all submissions in which the <mark>search term</mark> was found in one of the above</li>
+                </ol>
+
+                <p>Note: This script is case insensitive</p> #}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- endmacro %}
+

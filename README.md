@@ -8,6 +8,14 @@ A collection of reddit utility scripts organized as a self-hosted web app. Curre
 
 <img src="https://i.imgur.com/6Z3XtYC.png" width="909">
 
+<center>
+
+| <img src="https://i.imgur.com/I2yUn5j.gif" width="260"/> | <img src="https://i.imgur.com/PmxrN3G.png" width="260"/> | <img src="https://i.imgur.com/YZ0ggwN.png" width="260"/> |
+|:--------------------------------------------------------:|:--------------------------------------------------------:|:--------------------------------------------------------:|
+| GIF of Search Interface | Looking at Saved Posts | Trying the List Subreddits feature |
+
+</center>
+
 ## Install Process
 
 1. Clone the repository to your local machine
@@ -65,6 +73,18 @@ Helped wanted with the following:
 * Ability to export your saved posts in various formats
 * For really long comments (only show the first few paragraphs or so, collapse the rest)
 * Highlight search terms in results (something like [this](https://markjs.io/))
+
+I will slowly add features as I need them and I encourage people to do the same
+
+## To Add Your Own Feature
+
+1. Add it to the nav bar (file: `templates/nav.htm.j2`)
+1. Create a usage/help modal (file: `templates\modals.htm.j2`)
+1. Create a template file for the feature (create file in: `templates\features`)
+1. Write the backend Python code (put code in: `features`)
+1. Add your entry point function to the init file (file: `__init__.py`)
+
+Please use the `Search Saved Posts` and `List Subreddits` features as examples
 
 ## License
 

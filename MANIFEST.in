@@ -1,3 +1,4 @@
+include reddit_utils/files/logging_config.yaml
 graft reddit_utils/static
 graft reddit_utils/templates
 global-exclude *.pyc

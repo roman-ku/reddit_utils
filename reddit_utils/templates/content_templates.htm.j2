@@ -12,7 +12,7 @@
             <div class="col-auto pl-1 pr-0 d-none d-sm-block">
 
                 <div class="app-sub-image mt-1">
-                {% if 'preview' in item %}
+                {% if 'preview' in item and item['preview']['images'] and item['preview']['images'][0]['resolutions'] %}
                     <img class="img-thumbnail" src="{{ item['preview']['images'][0]['resolutions'][0]['url'] }}">
                 {% else %}
                     {# https://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src #}

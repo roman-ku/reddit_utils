@@ -3,7 +3,7 @@
 
 A collection of reddit utility scripts organized as a self-hosted web app. Currently the following features are available:
 
-* Search through your saved posts
+* Search through your saved posts (submissions/comments)
 * Ability to fetch your subreddits
 
 <img src="https://i.imgur.com/6Z3XtYC.png" width="909">

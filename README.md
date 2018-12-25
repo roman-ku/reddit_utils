@@ -40,14 +40,18 @@ Here are the general instructions:
 1. Make changes to code
 1. Run the flask app
 
-The specific instructions for power shell on Windows:
+Specific instructions for Windows PowerShell:
 
-1. `virtualenv env`
-1. `./env/Scripts/activate`
-1. `python -m pip install -e .`
-1. `$env:FLASK_ENV = "development"`
-1. `$env:FLASK_APP = "reddit_utils"`
-1. `flask run`
+```
+>>> git clone https://github.com/roman-ku/reddit_utils.git
+>>> cd reddit_utils
+>>> virtualenv env
+>>> ./env/Scripts/activate
+>>> pip install -r requirements.txt
+>>> $env:FLASK_ENV = "development"
+>>> $env:FLASK_APP = "reddit_utils"
+>>> flask run
+```
 
 Here are some helpful links that provide more detail:
 
@@ -92,4 +96,4 @@ Please use the `Search Saved Posts` and `List Subreddits` features as examples
 
 ## Disclaimer
 
-The developer (Roman Kuleshov) of this application (reddit_utils) has no affiliation with reddit inc.
+The developer (Roman Kuleshov) of this application (reddit_utils) has no affiliation with Reddit Inc.

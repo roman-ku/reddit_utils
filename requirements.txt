@@ -1,0 +1,5 @@
+arrow
+flask
+flask_bootstrap4
+praw
+PyYAML

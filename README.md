@@ -4,6 +4,7 @@
 A collection of reddit utility scripts organized as a self-hosted web app. Currently the following features are available:
 
 * Search through your saved posts (submissions/comments)
+* Search through posts that you've made (submissions/comments)
 * Ability to fetch your subreddits
 
 <img src="https://i.imgur.com/6Z3XtYC.png" width="909">
@@ -71,7 +72,7 @@ Helped wanted with the following:
 * Persist saved posts for faster searching
 * Ability to have multiple search terms (underlying code is there but needs GUI)
 * Ability to restrict search by subreddit (underlying code is there but needs GUI)
-* Ability to search your own submissions
+* <del>Ability to search your own submissions -> Added 2/14/2019</del>
 * Ability to search past the 1000 item limit
 * Ability to unhide all your posts
 * Ability to export your saved posts in various formats

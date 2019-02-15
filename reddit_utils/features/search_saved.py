@@ -7,7 +7,7 @@ from flask import (
 )
 
 from ..auth import api_access_required
-from .search import perform_search, check_form
+from .search_helpers import perform_search, check_form
 
 bp = Blueprint('search_saved', __name__)
 

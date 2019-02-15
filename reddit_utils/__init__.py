@@ -52,6 +52,9 @@ def create_app(test_config=None):
     from .features import search_saved
     app.register_blueprint(search_saved.bp)
 
+    from .features import search_user
+    app.register_blueprint(search_user.bp)
+
     from .features import list_subreddits
     app.register_blueprint(list_subreddits.bp)
 

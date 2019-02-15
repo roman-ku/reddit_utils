@@ -7,9 +7,37 @@ from pprint import pprint as pp
 from praw.models import Submission
 from praw.models import Comment
 
+from flask import (
+    flash, g, request
+)
+
 from ..reddit import get_reddit_object
 
 logger = logging.getLogger('logger')
+
+
+
+def search_page():
+
+    logger.debug('%s', pprint.pformat(request.form))
+
+    error = None
+    search_results = []
+
+    if request.method == 'POST' and request.form.get('search_term'):
+
+        search_options = check_form(request.form)
+        results = perform_search(search_options, g.token)
+
+        if results['status'] == 'success':
+            search_results = results['data']
+        else:
+            error = results['data']
+
+        if error:
+            flash(error)
+
+    return search_results
 
 
 
@@ -41,6 +69,12 @@ def check_form(form):
 
     search_options = {}
 
+    # determine search type
+    if 'search_type' in form:
+        search_options['search_type'] = form['search_type']
+    else:
+        search_options['search_type'] = ''
+
     # determine search terms
     if 'search_term' in form:
         search_options['search_queries'] = [form['search_term']]
@@ -66,7 +100,12 @@ def user_saved(reddit, **search_options):
 
     matched = False
 
-    for saved_item in reddit.user.me().saved(limit=None):
+    if 'search_type' in search_options and search_options['search_type'] == 'saved_posts':
+        source = reddit.user.me().saved(limit=None)
+    else:
+        source = reddit.user.me().new(limit=None)
+
+    for saved_item in source:
 
         # we can have two types of objects here:
         # 1. praw.models.reddit.comment.Comment
@@ -112,7 +151,7 @@ def user_saved(reddit, **search_options):
     # dump items to file (for development/debugging)
     # for i, saved_item in enumerate(results):
     #     with open('results/' + str(i) + '.txt', 'w', encoding='utf-8') as f:
-    #         f.write(pprint.pformat(vars(saved_item)))
+    #         f.write(pprint.pformat(vars(saved_item), indent=4))
 
 
 

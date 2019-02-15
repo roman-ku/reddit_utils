@@ -1,0 +1,153 @@
+{% extends "bootstrap/base.html" %}
+{% import 'nav.htm.j2' as nav %}
+{% import 'content_templates.htm.j2' as templates %}
+{% import 'modals.htm.j2' as modals %}
+
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+      href="{{url_for('static', filename='style.css')}}">
+<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet"> 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"/> 
+{% endblock %}
+
+
+{% block scripts %}
+
+{{super()}}
+
+    <script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+    </script>
+
+    {# <script type="text/javascript">
+        
+        $(function() {
+            $.ajax({
+                url: '{{ url_for("search.autocomplete") }}'
+                }).done(function (data) {
+                    $('#notes').autocomplete({
+                        source: data,
+                        minLength: 2
+                    });
+                });
+            });
+
+    </script>
+ #}
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('.btn[name=clear]').click(function() {
+
+            $('form input[name=search_term]').val('')
+            $('.app-search-results').empty()
+            $('.app-messages').empty()
+
+        })
+
+    })
+
+</script>
+
+{% endblock %}
+
+
+{% block title %}Search {% block feature_title %}{% endblock %} - reddit_utils{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" sizes="16x16">
+{% endblock %}
+
+
+{% block content %}
+
+    {{ nav.nav() }}
+
+    <div class="container pt-5">
+
+        <div class="row mt-5 pt-5">
+            <div class="col">
+                <h2 class="text-center app-off-black">Search {{ self.feature_title() }}</h2>
+            </div>
+        </div>
+
+        <div class="row mt-4 mb-0">
+            <div class="col col-sm-12 col-lg-8 mx-auto">
+                <form method="post">
+                    <div class="form-row mb-2">
+                        <div class="col">
+                            <input class="form-control" name="search_term" id="search_term" type="text" size="10" placeholder="Enter search term..." value="{{ request.form['search_term'] }}">
+                        </div>
+                        <div class="col d-none">
+                            <input class="form-control" name="search_type" id="search_type" type="text" value="{% block search_type %}{% endblock %}">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" name="search" class="btn btn-light form-control">Search</button>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" name="clear" class="btn btn-light form-control">Clear</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row app-search-results">
+
+            <div class="col col-sm-12 col-lg-8 mb-4 pb-4 mx-auto">
+                
+                {% if search_results %}
+
+                    <p class="mt-4 mb-2 app-off-black text-right">{{ search_results|count }} result{% if search_results|count > 1 %}s{% endif %}</p>
+
+                    {% for item in search_results %}
+
+                    <div class="app-result-card p-2 mb-2 rounded">
+
+                        {% if item['type'] == 'submission' %}
+                        {{ templates.submission_card(item) }}
+                        {% elif item['type'] == 'comment' %}
+                        {{ templates.comment_card(item) }}
+                        {% endif %}
+
+                    </div>
+
+                    {% endfor %}
+
+                {% elif not search_results and request.form['search_term'] %}
+                
+                    <h3 class="mt-4 pt-4 text-center app-off-black">No search results found</h3>
+
+                {% endif %}
+            
+            </div>
+
+        </div>
+
+        <div class="row mt-2 app-messages">
+
+            <div class="col col-sm-12 col-lg-8 mx-auto">
+                {% for message in get_flashed_messages() %}
+                    <div class="alert {% if not 'Error' in message %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                      {{ message }}
+                    </div>
+                {% endfor %}            
+            </div>
+        
+        </div>
+
+    </div>
+
+    <!-- Modals -->
+    {{ modals.about() }}
+    {% block our_modal %}{% endblock %}
+
+{% endblock %}

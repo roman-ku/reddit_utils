@@ -58,7 +58,7 @@
                 <p class="mb-1">This script works the following way:</p>
 
                 <ol>
-                    <li>Obtains the user's saved posts</li>
+                    <li>Obtains the user's saved posts (submissions and comments that the user saved)</li>
                     <li>Using simple ctrl+f searching looks for the user's <mark>search term</mark> in the following:
                         <ul>
                             <li>link_title</li>
@@ -77,6 +77,56 @@
                 <p>Note: This script is case insensitive</p>
 
                 <p>Note: Only the last 1000 saved posts are returned and can be searched. This is because there is a 1000 hard limit imposed by the reddit API.</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%- endmacro %}
+
+
+
+{% macro user_search() -%}
+
+<div class="modal fade" id="usage-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Usage</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body app-off-black">
+
+                <h2 class="text-center mb-4">Search User Posts</h2>
+
+                <p class="mb-1">This script works the following way:</p>
+
+                <ol>
+                    <li>Obtains the user's posts (submissions and comments that the user created)</li>
+                    <li>Using simple ctrl+f searching looks for the user's <mark>search term</mark> in the following:
+                        <ul>
+                            <li>link_title</li>
+                            <li>link_permalink</li>
+                            <li>link_url</li>
+                            <li>selftext</li>
+                            <li>title</li>
+                            <li>body</li>
+                            <li>permalink</li>
+                            <li>url</li>
+                        </ul>
+                    </li>
+                    <li>Displays all submissions in which the <mark>search term</mark> was found in one of the above</li>
+                </ol>
+
+                <p>Note: This script is case insensitive</p>
+
+                <p>Note: Only the last 1000 of the user's posts are returned and can be searched. This is because there is a 1000 hard limit imposed by the reddit API.</p>
 
             </div>
             <div class="modal-footer">

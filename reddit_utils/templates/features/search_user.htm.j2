@@ -1,11 +1,11 @@
 {% extends "features/search_common.htm.j2" %}
 
 {% block feature_title %}
-Saved Posts
+User Posts
 {% endblock %}
 
 {% block our_modal %}
-{{ modals.saved_search() }}
+{{ modals.user_search() }}
 {% endblock %}
 
-{% block search_type %}saved_posts{% endblock %}
+{% block search_type %}user_posts{% endblock %}

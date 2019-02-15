@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='reddit_utils',
-    version='1.0.8',
+    version='1.0.9',
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,

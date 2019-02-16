@@ -7,7 +7,7 @@ A collection of reddit utility scripts organized as a self-hosted web app. Curre
 * Search through posts that you've made (submissions/comments)
 * Ability to fetch your subreddits
 
-<img src="https://i.imgur.com/6Z3XtYC.png" width="909">
+<img src="https://i.imgur.com/ErmXBLv.png" width="909">
 
 <center>
 
